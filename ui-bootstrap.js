@@ -241,7 +241,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
         getIsOpen = $parse(attrs.isOpen);
         setIsOpen = getIsOpen.assign;
 
-        accordionCtrl.scope.$watch(getIsOpen, function(value) {
+        scope.$parent.$watch(getIsOpen, function(value) {
           scope.isOpen = !!value;
         });
       }
@@ -251,7 +251,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
           accordionCtrl.closeOthers(scope);
         }
         if ( setIsOpen ) {
-          setIsOpen(accordionCtrl.scope, value);
+          setIsOpen(scope.$parent, value);
         }
       });
     }
